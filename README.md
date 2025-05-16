@@ -3,7 +3,7 @@
 An AI-powered sales training application that enables sales rofessionals to practice realistic conversations with an AI coach, hosted entirely in-house with no reliance on external APIs
 
 ## Overview
-Sales AI Coach is a full-stack application designed to help sales teams sharpen their skills by simulating real-time conversations. The system runs a locally hosted language model using GPT4All(https://gpt4all.io/), enabling companies to:
+AI Sales Coach is a full-stack application designed to help sales teams sharpen their skills by simulating real-time conversations. The system runs a locally hosted language model using GPT4All(https://gpt4all.io/), enabling companies to:
 - Create risk-free, on-demand sales training sessions
 - Practice objection handling
 - Customize future scenarios for their needs
@@ -31,7 +31,7 @@ source venv/bin/activate
 pip install fastapi uvicorn gpt4all
 
 3. Add your .gguf model
-model = GPT4All("gguf-model-gpt4all-falcon-q4_0.gguf")
+model = GPT4All("mistral-7b-instruct-v0.1.Q4_0.gguf")
 
 4. Run the server
 uvicorn main:app --reload
