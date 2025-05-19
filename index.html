@@ -7,18 +7,23 @@
     </head>
 
     <body>
-        <h1>Hello, I'm your personal AI Sales Coach!</h1>
+        <h1 class="fade-in">Hello, I'm your personal AI Sales Coach!</h1>
+        <p id="purpose-text" class="fade-in">
+            This website is designed to help you calm your nerves and build confidence by practicing realistic sales conversations in a risk-free environment.
+        </p>
         <button id="clear-chat" type="button">Clear Chat 🗑</button>
         <div id="chat-box"></div>
 
-        <form id="chat-form">
+        <form id="chat-form" class="fade-in">
 
             <select id="scenario-select">
+                <option value="" disabled selected>Choose a scenario!</option>
                 <option value="general">General Sales Practice</option>
                 <option value="objection">Objection Handling</option>
                 <option value="outreach">Cold Outreach</option>
                 <option value="followup">Follow-Up</option>
                 <option value="demo">Product Demo</option>
+                <option value="other">Other (random chat)</option>
             </select>
 
             <p id="scenario-tip"></p>
@@ -26,6 +31,6 @@
             <input type="text" id="user-input" placeholder="Enter your prompt..." required>
             <button type="submit">Send</button>
         </form>
-         <script src="script.js"></script>
+        <script src="script.js"></script>
     </body>
 </html>

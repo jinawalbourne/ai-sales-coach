@@ -3,7 +3,8 @@ const scenarioTips = {
   objection: "💡 A quick tip: Focus on reframing value rather than lowering price!",
   outreach: "💡 A quick tip: Start with a curiosity hook that relates to the lead's goals!",
   followup: "💡 A quick tip: Keep follow-ups short, polite, and value-focused!",
-  demo: "💡 A quick tip: Align features with the customer's specific needs!"
+  demo: "💡 A quick tip: Align features with the customer's specific needs!",
+  other: "💡 Ask anything sales-related... your coach is ready!",
 };
 
 const form = document.getElementById("chat-form");
@@ -22,6 +23,11 @@ updateTip();
 
 form.addEventListener("submit", async (e) => {
     e.preventDefault();
+
+    if (!scenarioSelect.value) {
+        alert("Please choose a scenario before submitting.");
+        return;
+    }
     
     const scenarioLabel = scenarioSelect.selectedOptions[0].text;
     const userMessage = input.value;
