@@ -1,11 +1,34 @@
+const scenarioTips = {
+  general: "💡 Tip: Practice common sales questions to stay sharp.",
+  objection: "💡 Tip: Focus on reframing value rather than lowering price.",
+  outreach: "💡 Tip: Start with a curiosity hook that relates to the lead's goals.",
+  followup: "💡 Tip: Keep follow-ups short, polite, and value-focused.",
+  demo: "💡 Tip: Align features with the customer's specific needs."
+};
+
 const form = document.getElementById("chat-form");
 const input = document.getElementById("user-input");
 const chatBox = document.getElementById("chat-box");
+const tipBox = document.getElementById("scenario-tip");
+const scenarioSelect = document.getElementById("scenario-select");
+
+function updateTip() {
+    const selectedValue = scenarioSelect.value;
+    tipBox.textContent = scenarioTips[selectedValue] || "";
+}
+
+scenarioSelect.addEventListener("change", updateTip);
+updateTip();
 
 form.addEventListener("submit", async (e) => {
     e.preventDefault();
-    const userPrompt = input.value;
-    appendMessage("You", userPrompt);
+    
+    const scenarioLabel = scenarioSelect.selectedOptions[0].text;
+    const userMessage = input.value;
+    appendMessage("You", userMessage);
+    
+    const userPrompt = `You are a professional sales coach helping a user with the topic: "${scenarioLabel}". The user asks: "${input.value}"`;
+    
     input.value = "";
 
     try {
@@ -15,7 +38,11 @@ form.addEventListener("submit", async (e) => {
             body: JSON.stringify({ prompt: userPrompt }),
         });
         const data = await res.json();
-        appendMessage("AI", data.response.trim());
+        
+        let aiResponse = data.response.trim();
+        aiResponse = aiResponse.replace(/^here(')?s your response[:\-]?\s*/i, '');
+        
+        appendMessage("AI", aiResponse);
     } catch (err) {
         appendMessage("Error", "Failed to connect to the server.");
         console.error(err);
@@ -23,8 +50,9 @@ form.addEventListener("submit", async (e) => {
 });
 
 function appendMessage(sender, message) {
-    const messageDiv = document.createElement("div");
-    messageDiv.innerHTML = `<strong>${sender}:</strong> ${message}`;
-    chatBox.appendChild(messageDiv);
-    chatBox.scrollTop = chatBox.scrollHeight;
+  const div = document.createElement("div");
+  div.classList.add("message", sender.toLowerCase());
+  div.innerHTML = `<strong>${sender}:</strong> ${message}`;
+  chatBox.appendChild(div);
+  chatBox.scrollTop = chatBox.scrollHeight;
 }

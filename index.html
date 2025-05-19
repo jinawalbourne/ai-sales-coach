@@ -7,10 +7,21 @@
     </head>
 
     <body>
-        <h1>Sales AI Coach</h1>
+        <h1>AI Sales Coach</h1>
         <div id="chat-box"></div>
 
         <form id="chat-form">
+
+            <select id="scenario-select">
+                <option value="general">General Sales Practice</option>
+                <option value="objection">Objection Handling</option>
+                <option value="outreach">Cold Outreach</option>
+                <option value="followup">Follow-Up</option>
+                <option value="demo">Product Demo</option>
+            </select>
+
+            <p id="scenario-tip"></p>
+
             <input type="text" id="user-input" placeholder="Enter your prompt..." required>
             <button type="submit">Send</button>
         </form>
