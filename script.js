@@ -26,7 +26,7 @@ form.addEventListener("submit", async (e) => {
     const scenarioLabel = scenarioSelect.selectedOptions[0].text;
     const userMessage = input.value;
     appendMessage("You", userMessage);
-    
+
     const userPrompt = `You are a professional sales coach helping a user with the topic: "${scenarioLabel}". The user asks: "${input.value}"`;
     
     input.value = "";
@@ -42,17 +42,32 @@ form.addEventListener("submit", async (e) => {
         let aiResponse = data.response.trim();
         aiResponse = aiResponse.replace(/^here(')?s your response[:\-]?\s*/i, '');
         
-        appendMessage("AI", aiResponse);
+        appendMessage("AI", aiResponse, true);
     } catch (err) {
         appendMessage("Error", "Failed to connect to the server.");
         console.error(err);
     }
 });
 
-function appendMessage(sender, message) {
-  const div = document.createElement("div");
-  div.classList.add("message", sender.toLowerCase());
-  div.innerHTML = `<strong>${sender}:</strong> ${message}`;
-  chatBox.appendChild(div);
-  chatBox.scrollTop = chatBox.scrollHeight;
+function appendMessage(sender, message, animated = false) {
+    const div = document.createElement("div");
+    div.classList.add("message", sender.toLowerCase());
+    if (animated && sender === "AI") {
+        div.innerHTML = `<strong>${sender}:</strong> <span class="typing"></span>`;
+        chatBox.appendChild(div);
+        chatBox.scrollTop = chatBox.scrollHeight;
+
+        const typingSpan = div.querySelector(".typing");
+        let i = 0;
+        const interval = setInterval(() => {
+            typingSpan.textContent += message.charAt(i);
+            chatBox.scrollTop = chatBox.scrollHeight;
+            i++;
+            if (i >= message.length) clearInterval(interval);
+        }, 20);
+    } else {
+        div.innerHTML = `<strong>${sender}:</strong> ${message}`;
+        chatBox.appendChild(div);
+        chatBox.scrollTop = chatBox.scrollHeight;
+    }
 }
