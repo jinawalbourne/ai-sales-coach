@@ -1,9 +1,9 @@
 const scenarioTips = {
-  general: "💡 Tip: Practice common sales questions to stay sharp.",
-  objection: "💡 Tip: Focus on reframing value rather than lowering price.",
-  outreach: "💡 Tip: Start with a curiosity hook that relates to the lead's goals.",
-  followup: "💡 Tip: Keep follow-ups short, polite, and value-focused.",
-  demo: "💡 Tip: Align features with the customer's specific needs."
+  general: "💡 A quick tip: Practice common sales questions to stay sharp!",
+  objection: "💡 A quick tip: Focus on reframing value rather than lowering price!",
+  outreach: "💡 A quick tip: Start with a curiosity hook that relates to the lead's goals!",
+  followup: "💡 A quick tip: Keep follow-ups short, polite, and value-focused!",
+  demo: "💡 A quick tip: Align features with the customer's specific needs!"
 };
 
 const form = document.getElementById("chat-form");
@@ -71,3 +71,9 @@ function appendMessage(sender, message, animated = false) {
         chatBox.scrollTop = chatBox.scrollHeight;
     }
 }
+
+const clearBtn = document.getElementById("clear-chat");
+
+clearBtn.addEventListener("click", () => {
+    chatBox.innerHTML = "";
+});
