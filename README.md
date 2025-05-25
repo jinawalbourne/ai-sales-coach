@@ -15,10 +15,10 @@ AI Sales Coach is a full-stack application designed to help sales teams sharpen 
 - Fully offline-capable inference
 
 ## Tech Stack
-Front end: HTML, CSS, JavaScript
-Backend: Python, FastAPI
-AI Model: GPT4All ('.gguf')
-Deployment: Localhost
+- Front end: HTML, CSS, JavaScript
+- Backend: Python, FastAPI
+- AI Model: GPT4All ('.gguf')
+- Deployment: Localhost
 
 ## Getting Started
 1. Clone the repo
