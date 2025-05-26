@@ -10,6 +10,7 @@ AI Sales Coach is a full-stack application designed to help sales teams sharpen 
 
 ## Features
 - In-house AI model serving via FastAPI (no OpenAI or third-party APIs)
+- Designed RESTful endpoints and manage real-time data flow
 - Frontend chat interface built with HTML, CSS, and JS
 - Local '.gguf' model using GPT4All for privacy and speed
 - Fully offline-capable inference
