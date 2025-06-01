@@ -25,8 +25,8 @@ AI Sales Coach is a full-stack application designed to help sales teams sharpen 
 Core API functionality is tested using `pytest` and FastAPI's `TestClient`.
 
 To run tests:
-pip install pytest httpx
-pytest
+- pip install pytest httpx
+- pytest
 
 ## Getting Started
 1. Clone the repo
