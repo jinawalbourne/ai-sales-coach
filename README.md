@@ -21,6 +21,13 @@ AI Sales Coach is a full-stack application designed to help sales teams sharpen 
 - AI Model: GPT4All ('.gguf')
 - Deployment: Localhost
 
+## Testing
+Core API functionality is tested using `pytest` and FastAPI's `TestClient`.
+
+To run tests:
+pip install pytest httpx
+pytest
+
 ## Getting Started
 1. Clone the repo
 git clone https://github.com/jinawalbourne/ai-sales-coach.git
